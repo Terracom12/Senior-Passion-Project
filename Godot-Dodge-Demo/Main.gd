@@ -2,6 +2,7 @@ extends Node
 
 @export var mob_scene: PackedScene
 var score
+	
 
 func game_over():
 	$ScoreTimer.stop()
@@ -13,8 +14,10 @@ func game_over():
 	$DeathSound.play()
 
 func new_game():
+	$MobPath.scale = $Player.screen_size
+	print($MobPath.scale)
 	score = 0
-	$Player.start($StartPosition.position)
+	$Player.start()
 	$StartTimer.start()
 	
 	get_tree().call_group("mobs", "queue_free")
@@ -38,7 +41,7 @@ func _on_mob_timer_timeout():
 	var mob = mob_scene.instantiate()
 	
 	$MobPath/MobSpawnLocation.progress_ratio = randf_range(0.0, 1.0)
-	var spawn_location = $MobPath/MobSpawnLocation.position
+	var spawn_location = $MobPath/MobSpawnLocation.global_position
 	
 	mob.position = spawn_location
 	mob.rotation = $MobPath/MobSpawnLocation.rotation + randf_range(PI/4, 3*PI/4) 

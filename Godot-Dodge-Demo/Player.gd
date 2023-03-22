@@ -2,10 +2,10 @@ extends Area2D
 signal hit
 
 @export var speed = 400 # Player movement speed (pixels/second).
-var screen_size
+@export var screen_size: Vector2
 
-func start(pos):
-	position = pos
+func start():
+	position = screen_size/2
 	show()
 	$CollisionShape2D.disabled = false
 
