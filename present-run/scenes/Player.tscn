@@ -1,0 +1,128 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://sprites/santa/idle/santa_idle_1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/santa/idle/santa_idle_2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/santa/idle/santa_idle_3.png" type="Texture" id=4]
+[ext_resource path="res://sprites/santa/idle/santa_idle_4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/santa/idle/santa_idle_5.png" type="Texture" id=6]
+[ext_resource path="res://sprites/santa/idle/santa_idle_6.png" type="Texture" id=7]
+[ext_resource path="res://sprites/santa/idle/santa_idle_7.png" type="Texture" id=8]
+[ext_resource path="res://sprites/santa/idle/santa_idle_8.png" type="Texture" id=9]
+[ext_resource path="res://sprites/santa/idle/santa_idle_9.png" type="Texture" id=10]
+[ext_resource path="res://sprites/santa/idle/santa_idle_10.png" type="Texture" id=11]
+[ext_resource path="res://sprites/santa/idle/santa_idle_11.png" type="Texture" id=12]
+[ext_resource path="res://sprites/santa/idle/santa_idle_12.png" type="Texture" id=13]
+[ext_resource path="res://sprites/santa/idle/santa_idle_13.png" type="Texture" id=14]
+[ext_resource path="res://sprites/santa/idle/santa_idle_14.png" type="Texture" id=15]
+[ext_resource path="res://sprites/santa/idle/santa_idle_15.png" type="Texture" id=16]
+[ext_resource path="res://sprites/santa/idle/santa_idle_16.png" type="Texture" id=17]
+[ext_resource path="res://sprites/santa/jump/santa_jump_1.png" type="Texture" id=18]
+[ext_resource path="res://sprites/santa/jump/santa_jump_2.png" type="Texture" id=19]
+[ext_resource path="res://sprites/santa/jump/santa_jump_3.png" type="Texture" id=20]
+[ext_resource path="res://sprites/santa/jump/santa_jump_4.png" type="Texture" id=21]
+[ext_resource path="res://sprites/santa/jump/santa_jump_5.png" type="Texture" id=22]
+[ext_resource path="res://sprites/santa/jump/santa_jump_6.png" type="Texture" id=23]
+[ext_resource path="res://sprites/santa/jump/santa_jump_7.png" type="Texture" id=24]
+[ext_resource path="res://sprites/santa/jump/santa_jump_8.png" type="Texture" id=25]
+[ext_resource path="res://sprites/santa/jump/santa_jump_9.png" type="Texture" id=26]
+[ext_resource path="res://sprites/santa/jump/santa_jump_10.png" type="Texture" id=27]
+[ext_resource path="res://sprites/santa/jump/santa_jump_11.png" type="Texture" id=28]
+[ext_resource path="res://sprites/santa/jump/santa_jump_12.png" type="Texture" id=29]
+[ext_resource path="res://sprites/santa/move/santa_move_1.png" type="Texture" id=30]
+[ext_resource path="res://sprites/santa/move/santa_move_2.png" type="Texture" id=31]
+[ext_resource path="res://sprites/santa/move/santa_move_3.png" type="Texture" id=32]
+[ext_resource path="res://sprites/santa/move/santa_move_4.png" type="Texture" id=33]
+[ext_resource path="res://sprites/santa/move/santa_move_5.png" type="Texture" id=34]
+[ext_resource path="res://sprites/santa/move/santa_move_6.png" type="Texture" id=35]
+[ext_resource path="res://sprites/santa/move/santa_move_7.png" type="Texture" id=36]
+[ext_resource path="res://sprites/santa/move/santa_move_8.png" type="Texture" id=37]
+[ext_resource path="res://sprites/santa/move/santa_move_9.png" type="Texture" id=38]
+[ext_resource path="res://sprites/santa/move/santa_move_10.png" type="Texture" id=39]
+[ext_resource path="res://sprites/santa/jump/santa_jump_13.png" type="Texture" id=40]
+[ext_resource path="res://scripts/state_machine.gd" type="Script" id=41]
+[ext_resource path="res://scripts/fall_state.gd" type="Script" id=42]
+[ext_resource path="res://scripts/idle_state.gd" type="Script" id=43]
+[ext_resource path="res://scripts/move_state.gd" type="Script" id=44]
+[ext_resource path="res://scripts/jump_state.gd" type="Script" id=45]
+[ext_resource path="res://sounds/jump.wav" type="AudioStream" id=46]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
+"loop": false,
+"name": "jump",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "move",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 40 ) ],
+"loop": false,
+"name": "fall",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15, 15.5 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 15.0
+height = 3.14048
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 3
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+drag_margin_top = 0.4
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 15
+playing = true
+offset = Vector2( 80, 0 )
+
+[node name="TopCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7.5 )
+shape = SubResource( 2 )
+
+[node name="BottomCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 3 )
+
+[node name="States" type="Node2D" parent="."]
+script = ExtResource( 41 )
+
+[node name="Fall" type="Node2D" parent="States"]
+script = ExtResource( 42 )
+
+[node name="Idle" type="Node2D" parent="States"]
+script = ExtResource( 43 )
+
+[node name="Move" type="Node2D" parent="States"]
+script = ExtResource( 44 )
+
+[node name="Jump" type="Node2D" parent="States"]
+editor/display_folded = true
+script = ExtResource( 45 )
+timeToPeak = 0.6
+
+[node name="JumpDelayTimer" type="Timer" parent="States/Jump"]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 46 )
+

@@ -1,0 +1,255 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/GUI_controller.gd" type="Script" id=1]
+[ext_resource path="res://scripts/settings.gd" type="Script" id=2]
+[ext_resource path="res://font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://sprites/settings_icon.png" type="Texture" id=4]
+
+[node name="GUI" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Settings" type="Control" parent="."]
+pause_mode = 2
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -512.0
+margin_bottom = -300.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="Settings"]
+modulate = Color( 0.392157, 0.392157, 0.392157, 0.980392 )
+margin_left = 150.0
+margin_top = 150.0
+margin_right = 934.0
+margin_bottom = 525.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+margin_left = 150.0
+margin_top = 150.0
+margin_right = 934.0
+margin_bottom = 525.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelTitle" type="Label" parent="Settings/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Settings"
+align = 1
+valign = 3
+clip_text = true
+
+[node name="FullscreenOptionButton" type="CheckBox" parent="Settings/VBoxContainer"]
+margin_top = 69.0
+margin_right = 784.0
+margin_bottom = 142.0
+rect_min_size = Vector2( 20, 20 )
+size_flags_horizontal = 13
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 3 )
+pressed = true
+
+[node name="FullscreenOptionText" type="Label" parent="Settings/VBoxContainer/FullscreenOptionButton"]
+margin_left = 36.0
+margin_top = 4.0
+margin_right = 724.0
+margin_bottom = 69.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "fullscreen"
+valign = 3
+clip_text = true
+
+[node name="SoundVolumeContainer" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 146.0
+margin_right = 784.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 0, 65 )
+
+[node name="VolumeOptionSlider" type="HSlider" parent="Settings/VBoxContainer/SoundVolumeContainer"]
+margin_right = 200.0
+margin_bottom = 65.0
+min_value = -5.0
+max_value = 10.0
+step = 0.2
+ticks_on_borders = false
+
+[node name="VolumeOptionText" type="Label" parent="Settings/VBoxContainer/SoundVolumeContainer"]
+margin_left = 213.0
+margin_right = 724.0
+margin_bottom = 65.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "sound volume"
+valign = 3
+clip_text = true
+
+[node name="MusicVolumeContainer" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 215.0
+margin_right = 784.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 0, 65 )
+
+[node name="VolumeOptionSlider" type="HSlider" parent="Settings/VBoxContainer/MusicVolumeContainer"]
+margin_right = 200.0
+margin_bottom = 65.0
+min_value = -5.0
+max_value = 10.0
+step = 0.5
+ticks_on_borders = false
+
+[node name="VolumeOptionText" type="Label" parent="Settings/VBoxContainer/MusicVolumeContainer"]
+margin_left = 213.0
+margin_right = 724.0
+margin_bottom = 65.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "music volume"
+valign = 3
+clip_text = true
+
+[node name="ExitContainer" type="HBoxContainer" parent="Settings/VBoxContainer"]
+margin_top = 284.0
+margin_right = 784.0
+margin_bottom = 355.0
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="Settings/VBoxContainer/ExitContainer"]
+margin_right = 390.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 390, 60 )
+custom_fonts/font = ExtResource( 3 )
+text = "quit"
+
+[node name="CloseButton" type="Button" parent="Settings/VBoxContainer/ExitContainer"]
+margin_left = 394.0
+margin_right = 784.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 390, 60 )
+custom_fonts/font = ExtResource( 3 )
+text = "close"
+
+[node name="Interface" type="MarginContainer" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+margin_bottom = 75.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 1004.0
+margin_bottom = 75.0
+
+[node name="ScoreLabel" type="Label" parent="Interface/HBoxContainer"]
+margin_right = 657.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: 0"
+
+[node name="TimerLabel" type="Label" parent="Interface/HBoxContainer"]
+margin_left = 661.0
+margin_right = 916.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time: 000"
+align = 2
+
+[node name="SettingsButton" type="TextureButton" parent="Interface/HBoxContainer"]
+pause_mode = 2
+margin_left = 920.0
+margin_right = 984.0
+margin_bottom = 65.0
+rect_pivot_offset = Vector2( -940, 0 )
+texture_normal = ExtResource( 4 )
+
+[node name="TimeLeft" type="Timer" parent="."]
+pause_mode = 1
+autostart = true
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 974.0
+margin_bottom = 558.0
+
+[node name="WinText" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+margin_right = 924.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.160784, 0.780392, 0.666667, 1 )
+text = "You Win!"
+align = 1
+
+[node name="ScoreText" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 924.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = ExtResource( 3 )
+text = "Your Score: "
+
+[node name="TimeText" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+margin_top = 208.0
+margin_right = 924.0
+margin_bottom = 358.0
+rect_min_size = Vector2( 0, 150 )
+custom_fonts/font = ExtResource( 3 )
+text = "Your Time:"
+
+[node name="PlayAgainButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+margin_top = 362.0
+margin_right = 924.0
+margin_bottom = 433.0
+custom_fonts/font = ExtResource( 3 )
+text = "Play Again?"
+
+[node name="QuitButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+margin_top = 437.0
+margin_right = 924.0
+margin_bottom = 508.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+
+[connection signal="toggled" from="Settings/VBoxContainer/FullscreenOptionButton" to="Settings" method="_on_FullscreenOptionButton_toggled"]
+[connection signal="value_changed" from="Settings/VBoxContainer/SoundVolumeContainer/VolumeOptionSlider" to="Settings" method="_on_SoundVolumeOptionSlider_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/MusicVolumeContainer/VolumeOptionSlider" to="Settings" method="_on_MusicVolumeOptionSlider_value_changed"]
+[connection signal="pressed" from="Settings/VBoxContainer/ExitContainer/QuitButton" to="Settings" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Settings/VBoxContainer/ExitContainer/CloseButton" to="Settings" method="_on_CloseButton_pressed"]
+[connection signal="button_up" from="Interface/HBoxContainer/SettingsButton" to="Settings" method="_on_SettingsButton_button_up"]
+[connection signal="timeout" from="TimeLeft" to="." method="_on_TimeLeft_timeout"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
